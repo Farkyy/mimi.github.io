@@ -1,0 +1,37 @@
+html {
+    font-size: 20px; /* px signifie 'pixels': la taille de base pour la police est désormais 10 pixels de haut  */
+  font-family: 'Playfair-Display ';
+  text-align: center; /* cela devrait être le reste du résultat obtenu à partir de Google fonts */
+  }
+  h1 {
+    font-size: 60px;
+    text-align: center;
+    font-family: 'Vina-Sans' ;
+  }
+  
+  p, li {
+    font-size: 25px;
+    line-height: 1.5;
+    letter-spacing: 0px;
+    text-align: left;
+  }
+  html {
+    background-color: rgb(202, 27, 85);
+  }
+  body {
+    width: 1000px;
+    margin: 100 auto;
+    background-color: pink;
+    padding: 20px 20px 20px 20px;
+    border: 5px solid palevioletred;
+  }
+  h1 {
+    margin: 0;
+    padding: 20px 0;
+    color: black;
+    font-family: 'Vina-Sans';
+  }
+  img {
+    display: block;
+    margin: 0 auto;
+  }
