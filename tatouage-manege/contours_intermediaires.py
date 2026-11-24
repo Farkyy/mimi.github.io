@@ -156,6 +156,9 @@ def ellipse_pts(x, y, rx, ry, n=100):
 
 
 
+FESTOON_NODES = []
+
+
 def festoon(g_fine):
     """Guirlande du toit évasé : ligne d'attache (haut) + un arc entre chaque perle.
     Les perles sont les maxima de luminosité réguliers le long de la guirlande ;
@@ -183,6 +186,7 @@ def festoon(g_fine):
     w = int(per * 0.4)
     pk = [i for i in range(1, len(p) - 1) if p[i] >= p[i - 1] and p[i] > p[i + 1] and p[i] == p[max(0, i - w):i + w].max()]
     nodes = [(xs[i], yb[i] + off * S) for i in pk]
+    FESTOON_NODES[:] = nodes
     # profondeur : bord clair -> foncé le plus net sous le milieu de chaque arc
     depths = []
     for (x0, y0), (x1, y1) in zip(nodes, nodes[1:]):
@@ -417,6 +421,9 @@ def build(min_frac, g_canny, g_fine, g_mid, g_horse, cache):
             return True
         return abs(p[0] - AX) <= af + 8 * S
     lines = [l for l in lines if inside_scene(l.mean(0))]
+    cache['geo'] = dict(bars=list(kept_bars), meds=meds, deck_y=deck_y, a=a, b=b, af=af, bf=bf,
+                        fence_cy=fence_cy, fence_h=fence_h, posts=sorted(xs_posts), thick=thick,
+                        stairs=(xl, xr), nodes=list(FESTOON_NODES))
     return lines, (fence_cy + bf)
 
 
